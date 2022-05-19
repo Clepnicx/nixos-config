@@ -5,6 +5,7 @@
     ./hardware-configuration.nix
   ];
 
+  nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = [
     pkgs.firefox
@@ -14,11 +15,7 @@
     pkgs.discord
     pkgs.obsidian
     pkgs.bitwarden
-    pkgs.pycharm
-    pkgs.steam
-    pkgs.anki
     pkgs.syncthing-gtk
-    pkgs.tdesktop
     pkgs.nextcloud-client
   ];
 
@@ -47,23 +44,5 @@
   # enable flatpak and install desktop integration portal
   services.flatpak.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  
-  # zsh configuration
-  programs.zsh = { 
-    enable = true;
-    shellAliases = {};
-    history = {
-      size = 10000;
-    };
-    # oh-my-zsh configuration
-    oh-my-zsh = {
-      enable = true;
-      plugins = [ "git" ];
-    };
-  
-
-  
-  };
-
 
 }
