@@ -15,7 +15,6 @@
     pkgs.discord
     pkgs.obsidian
     pkgs.bitwarden
-    pkgs.syncthing-gtk
     pkgs.nextcloud-client
   ];
 
