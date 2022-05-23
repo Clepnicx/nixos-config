@@ -12,7 +12,21 @@ in
   ];
 
   home-manager.users.clepnicx = {
-    home.packages = [
+    home.packages = with pkgs; [ 
+      anki 
+      bitwarden 
+      discord
+      firefox 
+      jetbrains.pycharm-community 
+      kitty 
+      mailspring 
+      nextcloud-client
+      obsidian 
+      oh-my-zsh 
+      steam 
+      tdesktop    # telegram client
+      vscode 
+      zsh 
      ];
 
     # ZSH configuration
@@ -24,16 +38,61 @@ in
    	  # zsh shell aliases
    	  shellAliases = {
    	    update = "sudo nixos-rebuild switch";
-   	    nixosconf = "sudo micro /etc/nixos/configuration.nix";	
+   	    nixosconfig = "sudo micro /etc/nixos/configuration.nix";
+   	    homeconfig = "sudo micro /etc/nixos/home.nix";	
       };
+      # extra lines written to .zshrc 
+      initExtra = 
+      	''
+      	SPACESHIP_DIR_COLOR="#ff8700"
+      	SPACESHIP_CHAR_SYMBOL="λ  "
+      	SPACESHIP_CHAR_COLOR_SUCCESS="#9526fd"
+      	'';
       # oh-my-zsh configuration
       oh-my-zsh = {
         enable = true;
         plugins = [ "git" ];
-        # custom = "${pkgs.spaceship-ptompt}";
-        theme = "robbyrussell";
+        custom = "$HOME/.config/oh-my-zsh-custom";
+        theme = "spaceship";
       };
     };
+
+    # kitty configuration
+    programs.kitty = {
+      enable = true;
+      font = {
+      	name = "Hack";
+      	size = 13;
+      };
+      settings = {
+      	scrollback_lines = 20000;
+      	enable_audio_bell = false;
+      	remember_window_size = "yes";
+      	foreground = "#dddddd";    # foregroung color
+      	background = "#2b2e38";    # background color
+      	background_opacity = "0.9";
+      	term = "xterm-256color";    # $TERM variable
+      	kitty_mod = "ctrl+alt";    # kitty modifyer
+      };
+      keybindings = {
+      	"kitty_mod+enter" = "new_window";
+      	"kitty_mod+l" = "next_layout";
+      };   	
+    };
+ 
+    # git configuration
+    programs.git = {
+      enable = true;
+      userEmail = "flemminghunter@posteo.de";
+      userName = "Flemming Jäger";
+    };
+
+    # Nextclod-Client on startup
+    services.nextcloud-client = {
+      enable = true;
+      startInBackground = true;
+    };
+    
   };
 
 

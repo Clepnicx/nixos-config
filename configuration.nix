@@ -15,36 +15,22 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [ 
-    anki
-    bitwarden 
+  environment.systemPackages = with pkgs; [  
+    ark  
     bpytop 
     cmatrix
-    curl 
-    discord
-    firefox 
+    curl  
     ghc
     git 
-    gparted 
-    jetbrains.pycharm-community
-    kitty 
+    gparted  
     lolcat 
-    mailspring
     micro 
     mpv 
     neofetch 
-    nextcloud-client
-    obsidian 
-    oh-my-zsh 
     ranger 
-    spaceship-prompt
-    steam 
-    tdesktop    # telegram client
     texlive.combined.scheme-medium
-    vscode
     wget
-    xclip 
-    zsh  
+    xclip  
   ];
   
   # Use the systemd-boot EFI boot loader.
