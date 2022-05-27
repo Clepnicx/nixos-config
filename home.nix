@@ -23,8 +23,9 @@ in
       nextcloud-client
       obsidian 
       oh-my-zsh 
-      steam 
+      qbittorrent 
       tdesktop    # telegram client
+      tor-browser-bundle-bin 
       vscode 
       zsh 
      ];
@@ -37,9 +38,10 @@ in
    	  enableSyntaxHighlighting = true;
    	  # zsh shell aliases
    	  shellAliases = {
-   	    update = "sudo nixos-rebuild switch";
-   	    nixosconfig = "sudo micro /etc/nixos/configuration.nix";
-   	    homeconfig = "sudo micro /etc/nixos/home.nix";	
+   	    rebuild = "sudo nixos-rebuild switch";
+   	    update = "sudo nixos-rebuild switch --upgrade";
+   	    nixosconf = "sudo micro /etc/nixos/configuration.nix";
+   	    homeconf = "sudo micro /etc/nixos/home.nix";	
       };
       # extra lines written to .zshrc 
       initExtra = 

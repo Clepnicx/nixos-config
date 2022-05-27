@@ -13,6 +13,9 @@
       ./kde.nix
     ];
 
+  # allow unfree software
+  nixpkgs.config.allowUnfree = true;
+  
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [  
@@ -22,13 +25,15 @@
     curl  
     ghc
     git 
-    gparted  
+    gparted 
+    libsecret 
     lolcat 
     micro 
     mpv 
     neofetch 
     ranger 
-    texlive.combined.scheme-medium
+    texlive.combined.scheme-medium 
+    tor
     wget
     xclip  
   ];
@@ -37,6 +42,12 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # enable NTFS support
+  boot.supportedFilesystems = [ "ntfs" ];
+
+  # set kernel to the latest available
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   # enable auto updates
   system = {
   	autoUpgrade.enable = true;
@@ -44,9 +55,6 @@
   
   # enable bluetooth
   hardware.bluetooth.enable = true;
-
-  # allow unfree software
-  nixpkgs.config.allowUnfree = true;
   
   # enable network manager
   networking.networkmanager.enable = true;
@@ -86,10 +94,7 @@
   	pulse.enable = true;
   	jack.enable = true;
   };
-  
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
+    
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.clepnicx = {
     isNormalUser = true;
