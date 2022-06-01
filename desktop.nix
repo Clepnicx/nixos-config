@@ -4,8 +4,8 @@
 
 { 
   # desktop specific packages
-  environment.systemPackages = with pkgs; [
-  	via
+  environment.systemPackages = with pkgs; [ 
+    via
   ];
   
   # install offical NVIDIA drivers
@@ -23,5 +23,5 @@
   	enable = true;
   	dedicatedServer.openFirewall = true;    # Open ports in the firewall for Source Dedicated Server
   };
-
+  
 }

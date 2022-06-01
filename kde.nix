@@ -15,7 +15,10 @@
     desktopManager.plasma5.enable = true;
   };
 
+  # install gnome keyrings
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.sddm.enableGnomeKeyring = true;
-  
+
+  # install desktop integration portals for flatpks
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 }

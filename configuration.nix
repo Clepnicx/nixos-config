@@ -11,10 +11,7 @@
       ./home.nix 
       ./desktop.nix
       ./kde.nix
-    ];
-
-  # allow unfree software
-  nixpkgs.config.allowUnfree = true;
+    ]; 
   
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -37,6 +34,12 @@
     wget
     xclip  
   ];
+
+  # allow unfree software
+  nixpkgs.config.allowUnfree = true; 
+
+  # enable flatpaks
+  services.flatpak.enable = true;
   
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
