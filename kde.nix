@@ -4,7 +4,8 @@
 
 { 
   # KDE specific packages
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; [ 
+    ark
     kate
     libsForQt5.sddm-kcm
   ];

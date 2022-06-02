@@ -10,13 +10,12 @@
       ./hardware-configuration.nix
       ./home.nix 
       ./desktop.nix
-      ./kde.nix
+      ./gnome.nix
     ]; 
   
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [  
-    ark  
+  environment.systemPackages = with pkgs; [   
     bpytop 
     cmatrix
     curl  
