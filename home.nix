@@ -20,8 +20,8 @@ in
       jetbrains.pycharm-community 
       kitty 
       mailspring 
-      nextcloud-client
-      obsidian 
+      # marktext
+      nextcloud-client 
       oh-my-zsh 
       qbittorrent 
       tdesktop    # telegram client
