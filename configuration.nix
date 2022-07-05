@@ -22,7 +22,7 @@
     ghc
     git 
     gparted 
-    libsecret 
+    libsecret
     lolcat 
     micro 
     mpv 
@@ -85,7 +85,11 @@
   };
   
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  services.printing = {
+  	enable = true;
+  	drivers = [ pkgs.hplip ];
+  };
+  
 
   # Enable pipewire
   security.rtkit.enable = true;

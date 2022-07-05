@@ -3,7 +3,7 @@
 { config, pkgs, ... }:
 
 let
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-22.05.tar.gz";
 in
 
 {
@@ -19,12 +19,13 @@ in
       firefox 
       jetbrains.pycharm-community 
       kitty 
-      mailspring 
-      # marktext
-      nextcloud-client 
+      marktext
+      nextcloud-client
       oh-my-zsh 
-      qbittorrent 
+      qbittorrent
+      retroarch 
       tdesktop    # telegram client
+      thunderbird
       tor-browser-bundle-bin 
       vscode 
       zsh 
@@ -41,7 +42,8 @@ in
    	    rebuild = "sudo nixos-rebuild switch";
    	    update = "sudo nixos-rebuild switch --upgrade";
    	    nixosconf = "sudo micro /etc/nixos/configuration.nix";
-   	    homeconf = "sudo micro /etc/nixos/home.nix";	
+   	    homeconf = "sudo micro /etc/nixos/home.nix";
+   	    rg = "ranger";	
       };
       # extra lines written to .zshrc 
       initExtra = 
