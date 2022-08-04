@@ -7,7 +7,7 @@
   environment.systemPackages = with pkgs; [ 
     via
   ];
-  
+
   # install offical NVIDIA drivers
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl = {

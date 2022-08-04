@@ -1,4 +1,4 @@
-# My home configuration
+# my home configuration
 
 { config, pkgs, ... }:
 
@@ -16,12 +16,12 @@ in
       anki 
       bitwarden 
       discord
-      firefox 
+      firefox  
       jetbrains.pycharm-community 
       kitty 
       marktext
       nextcloud-client
-      oh-my-zsh 
+      oh-my-zsh  
       qbittorrent
       retroarch 
       tdesktop    # telegram client
@@ -96,7 +96,11 @@ in
       enable = true;
       startInBackground = true;
     };
-    
+
+    # Syncthing
+    services.syncthing = {
+      enable = true;
+    };
   };
 
 

@@ -27,6 +27,7 @@
     micro 
     mpv 
     neofetch 
+    python310
     ranger 
     texlive.combined.scheme-medium 
     tor
