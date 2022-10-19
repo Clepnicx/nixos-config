@@ -16,20 +16,24 @@ in
       anki 
       bitwarden 
       discord
-      firefox  
-      jetbrains.pycharm-community 
-      kitty 
+      firefox
+      handbrake
+      jetbrains.pycharm-community
+      jetbrains.idea-community
       marktext
+      makemkv
       nextcloud-client
-      oh-my-zsh  
+      openscad
+      papirus-icon-theme
       qbittorrent
       retroarch 
       tdesktop    # telegram client
+      texlive.combined.scheme-medium 
       thunderbird
-      tor-browser-bundle-bin 
-      vscode 
-      zsh 
-     ];
+      tor-browser-bundle-bin
+      vlc
+      vscode
+    ];
 
     # ZSH configuration
     programs.zsh = { 
@@ -48,17 +52,19 @@ in
       # extra lines written to .zshrc 
       initExtra = 
       	''
-      	SPACESHIP_DIR_COLOR="#ff8700"
-      	SPACESHIP_CHAR_SYMBOL="λ  "
-      	SPACESHIP_CHAR_COLOR_SUCCESS="#9526fd"
       	'';
-      # oh-my-zsh configuration
-      oh-my-zsh = {
-        enable = true;
-        plugins = [ "git" ];
-        custom = "$HOME/.config/oh-my-zsh-custom";
-        theme = "spaceship";
-      };
+    };
+
+    # Starship Zsh-Theme
+    programs.starship = {
+    	enable = true;
+    	# starship configuration
+    	settings = {
+    		character = {
+    			success_symbol = "[λ](#fd5100)";
+    			error_symbol = "[λ](bold red)";
+    		};
+    	};
     };
 
     # kitty configuration
@@ -68,22 +74,24 @@ in
       	name = "Hack";
       	size = 13;
       };
+      
       settings = {
       	scrollback_lines = 20000;
       	enable_audio_bell = false;
       	remember_window_size = "yes";
       	foreground = "#dddddd";    # foregroung color
-      	background = "#2b2e38";    # background color
-      	background_opacity = "0.9";
+      	background = "#000000";    # background color
+      	background_opacity = "0.7";
       	term = "xterm-256color";    # $TERM variable
       	kitty_mod = "ctrl+alt";    # kitty modifyer
       };
+      
       keybindings = {
       	"kitty_mod+enter" = "new_window";
       	"kitty_mod+l" = "next_layout";
       };   	
     };
- 
+    
     # git configuration
     programs.git = {
       enable = true;
@@ -97,11 +105,6 @@ in
       startInBackground = true;
     };
 
-    # Syncthing
-    services.syncthing = {
-      enable = true;
-    };
   };
-
-
+  
 }

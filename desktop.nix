@@ -3,11 +3,11 @@
 { config, pkgs, ... }:
 
 { 
-  # desktop specific packages
-  environment.systemPackages = with pkgs; [ 
-    via
-  ];
-
+  # get function row of keychron keyboard working
+  boot.extraModprobeConfig = ''
+    options hid_apple fnmode=2
+  '';
+  
   # install offical NVIDIA drivers
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl = {
@@ -16,7 +16,8 @@
   };
 
   # hostname of the machine
-  networking.hostName = "i7-4790k";
+  networking.hostName = "5950x";
+
 
   # install steam the correct way
   programs.steam = {

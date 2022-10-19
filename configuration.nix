@@ -13,48 +13,16 @@
       ./gnome.nix
     ]; 
   
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [   
-    bpytop 
-    cmatrix
-    curl  
-    ghc
-    git 
-    gparted 
-    libsecret
-    lolcat 
-    micro 
-    mpv 
-    neofetch 
-    python310
-    ranger 
-    texlive.combined.scheme-medium 
-    tor
-    wget
-    xclip  
-  ];
+  # set kernel to use
+  boot.kernelPackages = pkgs.linuxPackages_5_19;
 
-  # allow unfree software
-  nixpkgs.config.allowUnfree = true; 
-
-  # enable flatpaks
-  services.flatpak.enable = true;
-  
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   # enable NTFS support
   boot.supportedFilesystems = [ "ntfs" ];
-
-  # set kernel to the latest available
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  # enable auto updates
-  system = {
-  	autoUpgrade.enable = true;
-  };
   
   # enable bluetooth
   hardware.bluetooth.enable = true;
@@ -67,7 +35,7 @@
   networking.useDHCP = false;
   networking.interfaces.enp3s0.useDHCP = true;
 
-   
+
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
@@ -101,7 +69,41 @@
   	pulse.enable = true;
   	jack.enable = true;
   };
-    
+
+  
+  # allow unfree software
+  nixpkgs.config.allowUnfree = true; 
+
+  # enable flatpaks
+  services.flatpak.enable = true;
+  
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
+  environment.systemPackages = with pkgs; [   
+    bpytop 
+    cmatrix
+    curl  
+    ghc
+    gparted 
+    jdk
+    libsecret
+    lolcat 
+    micro 
+    mpv 
+    neofetch 
+    python3
+    R
+    ranger
+    tor
+    wget
+    xclip  
+  ];
+
+  # adding fonts
+  fonts.fonts = with pkgs; [
+  	nerdfonts
+  ]; 
+  
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.clepnicx = {
     isNormalUser = true;
@@ -117,7 +119,7 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "21.11"; # Did you read the comment?
+  system.stateVersion = "22.05"; # Did you read the comment?
 
 }
 
