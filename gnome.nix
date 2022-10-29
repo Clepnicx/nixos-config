@@ -2,12 +2,6 @@
 { config, pkgs, ... }:
 
 { 
-  # install gnome and gdm
-  services.xserver = {
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
-  };
-  
   # exclude some of the default gnome apps
   environment.gnome.excludePackages = with pkgs.gnome ; [
   	cheese # webcam tool
@@ -30,5 +24,10 @@
   
   # gnome's default is pulseaudio but I use pipewire
   hardware.pulseaudio.enable = false;
-
+  
+  # install gnome and gdm
+  services.xserver = {
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
+  };
 }

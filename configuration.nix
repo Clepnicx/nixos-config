@@ -87,13 +87,13 @@
     gparted 
     jdk
     libsecret
-    lolcat 
-    micro 
+    lolcat  
     mpv 
     neofetch 
     python3
     R
     ranger
+    texlive.combined.scheme-medium
     tor
     wget
     xclip  
