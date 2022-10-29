@@ -15,6 +15,7 @@ in
     home.packages = with pkgs; [ 
       anki 
       bitwarden 
+      conda
       discord
       firefox
       gaphor
@@ -27,6 +28,7 @@ in
       nextcloud-client
       openscad
       papirus-icon-theme
+      pinta
       qbittorrent
       retroarch 
       tdesktop    # telegram client 
