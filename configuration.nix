@@ -92,7 +92,6 @@
     neofetch 
     python3
     R
-    ranger
     texlive.combined.scheme-medium
     tor
     wget

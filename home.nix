@@ -27,6 +27,7 @@ in
       makemkv
       nextcloud-client
       openscad
+      openconnect
       papirus-icon-theme
       pinta
       qbittorrent
