@@ -121,13 +121,6 @@ in
 	
     };
     
-    # git configuration
-    programs.git = {
-      enable = true;
-      userEmail = "flemminghunter@posteo.de";
-      userName = "Flemming Jäger";
-    };
-
     # Nextclod-Client on startup
     services.nextcloud-client = {
       enable = true;
