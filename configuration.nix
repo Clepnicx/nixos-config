@@ -10,11 +10,11 @@
       ./hardware-configuration.nix
       ./home.nix 
       ./desktop.nix
-      ./gnome.nix
+      ./kde.nix
     ]; 
   
   # set kernel to use
-  boot.kernelPackages = pkgs.linuxPackages_5_19;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -81,19 +81,15 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [   
     bpytop 
-    cmatrix
     curl  
     ghc
     gparted 
     jdk
-    libsecret
-    lolcat  
+    libsecret 
     mpv 
     neofetch 
     python3
-    R
     texlive.combined.scheme-medium
-    tor
     wget
     xclip  
   ];

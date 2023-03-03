@@ -14,27 +14,26 @@ in
   home-manager.users.clepnicx = {
     home.packages = with pkgs; [ 
       anki 
-      bitwarden 
-      conda
+      bitwarden
+      cider 
       discord
       firefox
-      gaphor
       gnome.gnome-boxes
       handbrake
-      jetbrains.pycharm-community
-      jetbrains.idea-community
+      jetbrains.pycharm-professional
+      jetbrains.idea-ultimate
       marktext
       makemkv
       nextcloud-client
+      onlyoffice-bin
       openscad
       openconnect
+      papirus-folders
       papirus-icon-theme
-      pinta
       qbittorrent
       retroarch 
       tdesktop    # telegram client 
       thunderbird
-      tor-browser-bundle-bin
       vlc
       vscode
       zoom-us
@@ -112,11 +111,6 @@ in
           syntax enable
           filetype indent on
           colorscheme industry
-
-          nnoremap j <Left>
-          nnoremap k <Down>
-          nnoremap l <Up>
-          nnoremap ö <Right>
         '';
 	
     };
