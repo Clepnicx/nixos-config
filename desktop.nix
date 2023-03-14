@@ -10,9 +10,12 @@
   
   # install offical NVIDIA drivers
   services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.opengl = {
-    enable = true;
-    driSupport32Bit = true;
+  hardware = {
+    opengl = {
+      enable = true;
+      driSupport32Bit = true;
+    };
+    i2c.enable = true;
   };
 
   # hostname of the machine

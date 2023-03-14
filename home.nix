@@ -13,17 +13,21 @@ in
 
   home-manager.users.clepnicx = {
     home.packages = with pkgs; [ 
-      anki 
+      anki
+      ansible
+      ansible-lint
       bitwarden
       cider 
       discord
       firefox
       gnome.gnome-boxes
+      gparted
       handbrake
       jetbrains.pycharm-professional
       jetbrains.idea-ultimate
       marktext
       makemkv
+      micro
       nextcloud-client
       onlyoffice-bin
       openscad
@@ -32,8 +36,10 @@ in
       papirus-icon-theme
       qbittorrent
       retroarch 
-      tdesktop    # telegram client 
+      tdesktop    # telegram client
+      texlive.combined.scheme-full 
       thunderbird
+      ulauncher
       vlc
       vscode
       zoom-us
@@ -49,9 +55,8 @@ in
       shellAliases = {
         rebuild = "sudo nixos-rebuild switch";
         update = "sudo nixos-rebuild switch --upgrade";
-        nixosconf = "sudo vim /etc/nixos/configuration.nix";
-        homeconf = "sudo vim /etc/nixos/home.nix";
-        rg = "ranger";	
+        nixosconf = "sudo micro /etc/nixos/configuration.nix";
+        homeconf = "sudo micro /etc/nixos/home.nix";	
       };
       # extra lines written to .zshrc 
       initExtra = 
@@ -87,7 +92,7 @@ in
       	background = "#000000";    # background color
       	background_opacity = "0.7";
       	term = "xterm-256color";    # $TERM variable
-      	kitty_mod = "ctrl+alt";    # kitty modifyer
+      	kitty_mod = "ctrl+super";    # kitty modifyer
       };
       
       keybindings = {
@@ -96,25 +101,6 @@ in
       };   	
     };
 
-    # Vim configuration
-    programs.vim = {
-      enable = true;
-      # custom .vimrc lines
-      extraConfig = 
-        ''
-          set expandtab
-          set tabstop=4
-          set softtabstop=4
-          set wildmenu
-          set showmatch
-
-          syntax enable
-          filetype indent on
-          colorscheme industry
-        '';
-	
-    };
-    
     # Nextclod-Client on startup
     services.nextcloud-client = {
       enable = true;

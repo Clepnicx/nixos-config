@@ -11,10 +11,11 @@
       ./home.nix 
       ./desktop.nix
       ./kde.nix
+      #./awesome.nix
     ]; 
   
   # set kernel to use
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_6_1;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -44,13 +45,6 @@
   console = {
     font = "Lat2-Terminus14";
     keyMap = "de";
-  };
-
-
-  # Enable the X11 windowing system.
-  services.xserver = {
-    enable = true;
-    layout = "de";
   };
   
   # Enable CUPS to print documents.
@@ -83,15 +77,13 @@
     bpytop 
     curl  
     ghc
-    gparted 
+    git 
     jdk
     libsecret 
-    mpv 
     neofetch 
     python3
-    texlive.combined.scheme-medium
     wget
-    xclip  
+    xclip
   ];
 
   # adding fonts
