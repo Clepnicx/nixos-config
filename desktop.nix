@@ -3,6 +3,11 @@
 { config, pkgs, ... }:
 
 { 
+  # Desktop specific packages
+  environment.systemPackages = with pkgs; [
+      cudaPackages.cudatoolkit
+    ];
+    
   # get function row of keychron keyboard working
   boot.extraModprobeConfig = ''
     options hid_apple fnmode=2

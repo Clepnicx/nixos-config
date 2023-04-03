@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, stdenv, fetchFromGitHub, ... }:
 
 {
   imports =
@@ -17,11 +17,33 @@
   # set kernel to use
   boot.kernelPackages = pkgs.linuxPackages_6_1;
 
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
-
+  # Use the grub2 boot loader.
+  boot.loader = {
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot/efi";
+    };
+    grub = {
+  	  devices = [ "nodev" ];
+  	  efiSupport = true;
+  	  enable = true;
+  	  version = 2;
+  	  useOSProber = true;
+  	  # package grub theme from github
+  	  theme = pkgs.stdenv.mkDerivation {
+  	  	name = "Grub-Themes";
+  	  	# decides which theme will be used out of the repos themes folder
+  	  	installPhase = "cp -r $src/themes/Shodan/ $out";
+  	  	src = pkgs.fetchFromGitHub {
+          owner = "RomjanHossain";
+          repo = "Grub-Themes";
+          rev = "afe963d00d38375ce6528ccac979c45e8b09a5f5";
+          sha256 = "9FRyUwWnL0KLXc168UUl4ilQ5rRX6cjX1Tes6A1s01w=";
+  	  	};
+  	  };
+  	};
+  };
+  
   # enable NTFS support
   boot.supportedFilesystems = [ "ntfs" ];
   
@@ -36,9 +58,12 @@
   networking.useDHCP = false;
   networking.interfaces.enp3s0.useDHCP = true;
 
-
-  # Set your time zone.
-  time.timeZone = "Europe/Berlin";
+  # Set time zone.
+  time = {
+    timeZone = "Europe/Berlin";
+    # Setting RTC time standard to localtime
+    hardwareClockInLocalTime = true;
+  };
 
   # Select internationalisation properties.
   i18n.defaultLocale = "de_DE.UTF-8";
@@ -78,7 +103,7 @@
     curl  
     ghc
     git 
-    jdk
+    #jdk
     libsecret 
     neofetch 
     python3
