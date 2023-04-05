@@ -20,7 +20,6 @@ in
       cider
       discord
       firefox
-      gnome.gnome-boxes
       gparted
       handbrake
       jetbrains.pycharm-professional
@@ -36,10 +35,12 @@ in
       papirus-folders
       papirus-icon-theme
       qbittorrent
+      quickemu
       retroarch 
       tdesktop    # telegram client
       texlive.combined.scheme-full 
       thunderbird
+      ulauncher
       vlc
       vscode
       zoom-us
@@ -76,6 +77,48 @@ in
       };
     };
 
+    # polybar configuration
+    services.polybar = {
+      enable = true;
+      config = {
+      	"bar/top" = {
+      	  monitor = "DP-0";
+      	  monitor-strict = "true";
+      	  monitor-exact = "true";
+      	  fixed-center = "true";
+      	  
+      	  width = "100%";
+      	  height = "2%";
+      	  offset-x = 1080;
+      	  offset-y = 127;
+      	  #radius = 90;
+      	  border-size = 2;
+      	  
+      	  font-0 = "Hack:size=10";
+      	  
+      	  modules-center = "date";
+      	  
+      	  tray-position = "right";
+      	  tray-maxsize = 16;
+      	};
+      	"module/date" = {
+      	  type = "internal/date";
+      	  internal = 5;
+      	  date = "%d.%m.%y";
+      	  time = "%H:%M";
+      	  label = "%time%  %date%";
+      	};
+      };
+      script = ''
+        #killall -q polybar
+        #polybar top &
+      '';
+    };
+    # run polybar on startup
+    #systemd.user.services.polybar = {
+    #  Install.WantedBy = [ "graphical-session.target" ];
+    #};
+    
     # kitty configuration
     programs.kitty = {
       enable = true;
@@ -182,6 +225,5 @@ in
       startInBackground = true;
     };
 
-  };
-  
+  }; 
 }

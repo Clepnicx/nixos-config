@@ -106,6 +106,7 @@
     #jdk
     libsecret 
     neofetch 
+    psmisc
     python3
     wget
     xclip
