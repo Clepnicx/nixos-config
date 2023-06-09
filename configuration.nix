@@ -15,7 +15,10 @@
     ]; 
   
   # set kernel to use
-  boot.kernelPackages = pkgs.linuxPackages_6_1;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  # load amd drivers
+  boot.initrd.kernelModules = [ "amdgpu" ];
 
   # Use the grub2 boot loader.
   boot.loader = {
@@ -49,15 +52,10 @@
   
   # enable bluetooth
   hardware.bluetooth.enable = true;
-  
-  # enable network manager
-  networking.networkmanager.enable = true;
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
-  networking.useDHCP = false;
-  networking.interfaces.enp3s0.useDHCP = true;
 
+  # enable networking
+  networking.networkmanager.enable = true;
+  
   # Set time zone.
   time = {
     timeZone = "Europe/Berlin";
@@ -100,7 +98,9 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [   
     bpytop 
-    curl  
+    curl
+    gcc
+    gdb
     ghc
     git 
     #jdk
@@ -115,7 +115,10 @@
   # adding fonts
   fonts.fonts = with pkgs; [
   	nerdfonts
-  ]; 
+  	source-code-pro
+  ];
+
+  nixpkgs.config.permittedInsecurePackages = [ "electron-20.3.11" ];
   
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.clepnicx = {
@@ -124,7 +127,6 @@
     extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
     shell = pkgs.zsh;
   };
-
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -135,4 +137,3 @@
   system.stateVersion = "22.05"; # Did you read the comment?
 
 }
-
